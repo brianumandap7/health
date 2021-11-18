@@ -23,7 +23,7 @@
 		<p style = "font-family:helvetica; color: #4F4F4F"><b>IT Health Check</b></p>
 				{% csrf_token %}
 				<fieldset class="form-group">
-				  
+				  {{ form|crispy }}
 				</fieldset>
 				<br>
 				<div class = "form-group">
