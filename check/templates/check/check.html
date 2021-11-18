@@ -1,0 +1,138 @@
+{% extends 'check/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+	.flogo {
+		width: 120px;
+
+	}
+</style>	
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-mdb-toggle="collapse"
+              data-mdb-target="#navbarExample01"
+              aria-controls="navbarExample01"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="/">FEU - Health Checklist</a>
+            
+          </li>
+          <li class="nav-item active">
+          	
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Background image -->
+  <div
+          class="p-5 text-center bg-image"
+          style="
+          background-image: url();
+          height: 400px;
+        "
+  >
+    <div class="mask" style="background-color: #228B22;">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">Information Technology</h1>
+          <h4 class="mb-3">Health Checklist</h4>
+          <h6>This online form collects and processes data solely to control the COVID-19 and ensure everyone's health and safety</h6>
+          <img src="/media/uploads/feulogo.png" class="flogo img-responsive">
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- Background image -->
+</header>
+
+<div class="container">
+<center>
+<form method="POST">
+	{% csrf_token %}
+	<table>
+		<tr>
+			<td>
+				Full Name:
+			</td>
+			<td>
+				<input type="text" name="fname" placeholder="Full Name" class="form-control" value="{% for items in curr %}{{items.first_name}} {{items.last_name}}{% endfor %}" readonly>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Gender:
+			</td>
+			<td>
+				 
+				<select class="form-control" name="gender" class="form-control">
+					<option value="">--</option>
+					{% for items in gender %}
+				    <option value="{{items.id}}">{{items.gender}}</option>
+				    {% endfor %}
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				Email Address:
+			</td>
+			<td>
+				<input type="email" name="email" placeholder="Email Address" value="{% for items in curr %}{{items.email}}{% endfor %}" class="form-control" readonly>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Classification: 
+			</td>
+			<td>
+				
+				<select class="form-control" name="classi" class="form-control">
+					<option value="">--</option>
+					{% for items in class %}
+				    <option value="{{items.id}}">{{items.classification}}</option>
+				    {% endfor %}
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Identification Number: 
+			</td>
+			<td>
+				<input type="text" name="in" placeholder="Identification Number" class="form-control">
+
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<input type="submit" name="sbtn" class="btn btn-success" value="Submit">
+			</td>
+			
+		</tr>
+	</table>
+</form>
+</center>
+</div>
+
+{% endblock content %}

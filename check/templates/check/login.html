@@ -1,0 +1,43 @@
+{% extends 'check/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+	.google .googleimg {
+		height: 40px;
+	}
+	.form-group {
+		width: 350px;
+	}
+	.gb{
+		width: 67%;
+	}
+</style>
+
+<center>
+	<!-- <div class="card-header"><h3>LOGIN</h3></div> -->
+	<form method="POST" class = "loginform mt-4">
+		<a href="/">
+		<img src="/media/uploads/feulogo.png" width="180" height="180" >
+		</a>	
+		<p style = "font-family:helvetica; color: #4F4F4F"><b>IT Health Check</b></p>
+				{% csrf_token %}
+				<fieldset class="form-group">
+				  
+				</fieldset>
+				<br>
+				<div class = "form-group">
+					<button class ="btn btn-primary form-control loginbtn" type = "submit">Login</button>
+				</div>
+
+				
+	</form>
+</center>
+<br>	
+
+<br>
+
+
+
+
+{% endblock content %}
